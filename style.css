@@ -1,0 +1,256 @@
+:root {
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2.5rem;
+  --space-2xl: 5rem;
+
+  --shadow-sm: 0 0.5rem 2rem 0 rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 0.5rem 2rem 0 rgba(0, 0, 0, 0.7);
+  --shadow-lg: 0 0.5rem 2rem 0 rgba(0, 0, 0, 1);
+  --shadow-xl: 0 0.5rem 2rem 0 rgba(0, 0, 0, 1);
+
+  --duration-base: 0.5s;
+  --duration-fast: 0.3s;
+
+  --radius: 12px;
+  --radius-round: 9999px;
+  --border: black solid 3px;
+  --width: 250px;
+
+  --text-lg: 2rem;
+
+  --color-normal: dodgerblue;
+  --color-combination: gold;
+  --color-combination-special: red;
+}
+
+body {
+  background-color: white;
+  font-weight: 400;
+  line-height: 1.5;
+  font-family: system-ui;
+
+  margin-block: clamp(var(--space-xl), 8dvh, var(--space-2xl));
+  margin-inline: clamp(var(--space-md), 4dvh, var(--space-2xl));
+
+  display: flex;
+  flex-direction: column;
+  gap: clamp(var(--space-md), 4dvh, var(--space-2xl));
+}
+
+#box {
+  display: flex;
+  flex-direction: column;
+  margin-inline: auto;
+  width: fit-content;
+  overflow: hidden;
+
+  gap: 3px;
+  background: black;
+
+  border-radius: 5%;
+  border: var(--border);
+}
+
+#box-top {
+  width: var(--width);
+  height: 120px;
+  background-color: rgba(89, 45, 13);
+
+  box-shadow: inset 0 0 1rem;
+}
+
+#box-bottom {
+  width: var(--width);
+  box-sizing: border-box;
+  height: 180px;
+  background-color: chocolate;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 4rem;
+  font-weight: bold;
+  font-family: 'Noto Serif JP';
+}
+
+#coins {
+  display: flex;
+  width: fit-content;
+  justify-content: center;
+  gap: var(--space-lg);
+
+  margin-inline: auto;
+}
+
+.coin {
+  --scale: 1;
+  --translateX: 0px;
+  --translateY: 0px;
+  box-shadow: var(--shadow-md);
+
+  transform: translate(var(--translateX), var(--translateY)) scale(var(--scale));
+
+  transition: transform var(--duration-fast), box-shadow var(--duration-fast);
+
+  width: 80px;
+  height: 80px;
+  border-radius: var(--radius-round);
+  border: black solid 2px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 1.5rem;
+  font-weight: bold;
+
+  margin-inline: auto;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .coin:hover {
+    --scale: 1.2;
+    box-shadow: var(--shadow-lg);
+  }
+}
+
+.coin:active {
+  transform: scale(0.9);
+  box-shadow: var(--shadow-md);
+}
+
+#coin5 {
+  background-color: darkgoldenrod;
+}
+
+#coin10 {
+  background-color: sienna;
+}
+
+#coin100 {
+  background-color: silver;
+}
+
+#display {
+  width: var(--width);
+  height: 50px;
+  margin-inline: auto;
+
+  border-radius: var(--radius-round);
+  border: var(--border);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-weight: bold;
+}
+
+#display-totalAmountOffered {
+  font-size: var(--text-lg);
+}
+
+#prayButton {
+  transform: scale(1);
+  box-shadow: var(--shadow-md);
+
+  transition: transform var(--duration-fast), box-shadow var(--duration-fast), background-color var(--duration-base);
+
+  background-color: var(--color-normal);
+  border-radius: var(--radius-round);
+
+  width: 150px;
+  height: 110px;
+
+  color: white;
+  font-size: 3rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-inline: auto;
+
+  border: none;
+}
+
+@keyframes pop-prayButton {
+  0% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+#prayButton.pop {
+  animation: pop-prayButton var(--duration-base);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  #prayButton:hover {
+    transform: scale(1.2);
+    box-shadow: var(--shadow-lg);
+  }
+}
+
+#prayButton:active {
+  transform: scale(0.9);
+  box-shadow: var(--shadow-md);
+}
+
+#modal[hidden] {
+  display: none;
+}
+
+#modal {
+  opacity: 0;
+  transition: opacity var(--duration-fast);
+
+  position: fixed;
+  inset: 16vh 8vw;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 1.5rem;
+  box-shadow: var(--shadow-lg);
+  background-color: var(--color-normal);
+  padding: 8vh 8vw;
+}
+
+@keyframes pop-modal {
+  0% {
+    transform: scale(0.8);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+#modal.open {
+  opacity: 1;
+  animation: pop-modal var(--duration-base);
+  transition: opacity var(--duration-fast), transform var(--duration-fast);
+}
+
+#modal-message {
+  font-size: var(--text-lg);
+  font-weight: bold;
+  color: white;
+}
+
+#modal-clap {
+  font-size: 7rem;
+}

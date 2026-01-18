@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>デジタルお賽銭</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <div id="box">
+      <div id="box-top"></div>
+      <div id="box-bottom">賽銭</div>
+    </div>
+    <div id="coins">
+      <div id="coin5" class="coin">5</div>
+      <div id="coin10" class="coin">10</div>
+      <div id="coin100" class="coin">100</div>
+    </div>
+    <div id="display">
+      <span>お賽銭&nbsp;&nbsp;¥&nbsp;</span>
+      <span id="display-totalAmountOffered"></span>
+    </div>
+    <button id="prayButton">🙏</button>
+    <div id="modal" hidden>
+      <div id="modal-message"></div>
+      <div id="modal-clap">🙏</div>
+    </div>
+  </body>
+</html>
